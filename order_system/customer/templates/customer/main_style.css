@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    color : red ;
+    background: white;
+    border-bottom: 2px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+}
+
+h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin: 0 15px;
+    color : black ;
+}
+
+.icon {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-size:18px;
+    font-weight: bold;
+}
+
+.cart-icon {
+    color : red;
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+section {
+    margin-top: 100px; /* Adjust this value to leave space for the fixed header */
+    padding: 20px;
+    text-align: center;
+}
+
+
+body {
+
+    margin: 0;
+    padding: 0;
+}
+
+.text {
+    padding: 20px;
+    text-align:left;
+
+}
+
+.page-name {
+margin: 0 auto;
+
+max-width: 900px;
+margin-top: 3cm;
+padding: 20px;
+border: 2px solid #ccc;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.highlighted-header {
+color: red; /* Highlight the header text in red */
+text-align: left;
+
+}
+
+
+.custom-footer {
+    background-color: red;
+    color: white;
+    padding: 10px 0;
+}
+
+.custom-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.custom-footer a:hover {
+    text-decoration: underline;
+}
+
+
