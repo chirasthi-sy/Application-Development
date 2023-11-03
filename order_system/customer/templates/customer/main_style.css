@@ -15,14 +15,9 @@ body {
   }
 }
 
-
-
-
-
 header {
     background: white;
     border-bottom: 2px solid #ccc;
-    font-family: 'Perpetua Titling MT', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
@@ -46,11 +41,6 @@ header::before {
     animation: headerBackgroundAnimation 5s infinite alternate;
     z-index: -1; /* Place it behind the header */
 }
-
-
-
-
-
 
 h1 {
     margin: 0;
