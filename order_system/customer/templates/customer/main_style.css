@@ -3,10 +3,26 @@ body {
     padding: 0;
 }
 
+@keyframes headerBackgroundAnimation {
+  0% {
+    opacity: 0.2; /* Initial opacity for the photo */
+  }
+  50% {
+    opacity: 0.5; /* Midpoint opacity for the photo */
+  }
+  100% {
+    opacity: 0.2; /* Return to the initial opacity for the photo */
+  }
+}
+
+
+
+
+
 header {
-    color : red ;
     background: white;
     border-bottom: 2px solid #ccc;
+    font-family: 'Perpetua Titling MT', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
@@ -15,8 +31,26 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-
+    overflow: hidden; /* Hide the overflowing pseudo-element */
 }
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://tse3.mm.bing.net/th?id=OIP.Zr5hw6AzKpXHjzNLDR2zVQHaE7&pid=Api&P=0&h=220');
+    opacity: 0.1; /* Initial opacity for the photo */
+    animation: headerBackgroundAnimation 5s infinite alternate;
+    z-index: -1; /* Place it behind the header */
+}
+
+
+
+
+
 
 h1 {
     margin: 0;
