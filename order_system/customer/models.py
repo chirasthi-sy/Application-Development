@@ -14,7 +14,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class OrderModel(model.model):
+class OrderModel(models.model):
     created_on=models.DateTimeField(auto_now_add=True)
     price=modls.DecimalField(max_digits=7,decimal_places=2)
     items=model.ManyToManyField('MenuItem',related_name='order',blank=True)
