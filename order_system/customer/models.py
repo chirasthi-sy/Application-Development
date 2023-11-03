@@ -6,7 +6,7 @@ class MenuItem(models.model):
     price=model.DecimalField(max_digits=5,decimal_places=2)
     category=models.ManyToManyField('Category',related_name='item')
 
-    def__str__(self):
+    def __str__(self):
        return self.name
 class Category(models.Model):
     name=models.CharField(max_length=100)
@@ -24,4 +24,4 @@ class OrderModel(model.model):
        
        
 
-        "# Create your models here.
+# Create your models here.
