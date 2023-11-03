@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponge.lk - one stop shop for all your sweet cravings!</title>
+    <title>Sponge.lk - one-stop shop for all your sweet cravings!</title>
     <link rel="stylesheet" href="main_style.css">
+    <link rel="stylesheet" href="Product-container_styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <style>
@@ -35,7 +36,6 @@
             text-align: center;
             animation: changeBackground 15s infinite;
             box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75); /* Add shadow */
-
         }
 
         @keyframes changeBackground {
@@ -66,6 +66,7 @@
             font-size: 1.5em;
             font-weight: bold;
         }
+
     </style>
 </head>
 <body>
@@ -98,12 +99,30 @@
         <div class="notice-container">
             <div class="message-box">
                 <p class="message">Purchase one large platter and receive a complimentary Vanilla Ribbon Cake.</p>
-                <p class="message">Enjoy a 10% discount on pre-orders for special occasions.</p>
-                <p class="message">With Christmas just around the corner, keep an eye on us for a delightful selection of the finest Christmas cakes in town!</p>
             </div>
         </div>
     </div>
-        <div class="product-container">
+
+    <script>
+        const messageBox = document.querySelector(".message-box");
+        const messages = [
+            "Purchase one large platter and receive a complimentary Vanilla Ribbon Cake.",
+            "Enjoy a 10% discount on pre-orders for special occasions.",
+            "With Christmas just around the corner, keep an eye on us for a delightful selection of the finest Christmas cakes in town!",
+        ];
+
+        let currentMessageIndex = 0;
+
+        function updateMessageBox() {
+            messageBox.innerHTML = `<p class="message">${messages[currentMessageIndex]}</p>`;
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        }
+
+        updateMessageBox();
+        setInterval(updateMessageBox, 5000); // Display each message for 5 seconds
+    </script>
+
+            <div class="product-container">
             <div class="product-card">
                 <img class="product-image" src="https://www.milkmaid.lk/sites/default/files/2022-05/thumbnail-image.jpg" alt="Vanilla Ribbon Cake">
                 <p class="product-title">Vanilla Ribbon Cake</p>
