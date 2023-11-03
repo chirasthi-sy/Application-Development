@@ -20,8 +20,8 @@ class OrderModel(model.model):
     items=model.ManyToManyField('MenuItem',related_name='order',blank=True)
 
     def __str__(self):
-        return f'Order:{self.created_on.strftime('%b %d %I:%M %p)}'
+        return f'Order:{self.created_on.strftime("%b %d %I:%M %p")}'
        
        
-    
+
         "# Create your models here.
