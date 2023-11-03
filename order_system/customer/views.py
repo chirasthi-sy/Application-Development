@@ -11,6 +11,7 @@ class About(View):
 
 class Order(View):
     def get(selfself,request,*args,**kwargs):
+
         #get every item from each category
 #pass into context
 
