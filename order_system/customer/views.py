@@ -3,20 +3,17 @@ from django.views import View
 
 class Index(View):
     def get(selfself,request,*args,**kwargs):
-        return render(request,'customer/index.html')
+        return render(request,'customer/Home_page.html')
 
 class About(View):
     def get(selfself, request,*args, **kwargs):
-        return render(request, 'customer/about.html')
+        return render(request, 'customer/about_us.html')
 
 class Order(View):
     def get(selfself,request,*args,**kwargs):
 
-        #get every item from each category
+#get every item from each category
 #pass into context
 
 #render the template
-
-
-
 # Create your views here.
