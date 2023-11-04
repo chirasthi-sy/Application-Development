@@ -33,15 +33,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'customer',
-    'management',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'customer',
+    'management'
 ]
+
+STATIC_URL = "static/"
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
