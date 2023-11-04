@@ -1,11 +1,12 @@
 .best_sellers-container {
-    max-width: 900px;
-    margin-top: 1cm;
-    margin-left: 11.5cm;
+    max-width: 35cm;
+    margin-top: 2cm;
+    margin-left: 2cm;
+    margin-right: 1cm;
     padding: 20px;
     text-align: center;
     border: 2px solid #ccc;
-    border-radius: 10px;
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -14,11 +15,11 @@
 }
 
 
-.product-container {
+       .product-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            gap: 20px; /* Adjust the gap as needed */
-            max-width: 900px;
+            gap: 40px; /* Adjust the gap as needed */
+            width: 1200px;
             margin-top:  0cm;
             padding: 20px;
         }
