@@ -1,3 +1,19 @@
+.best_sellers-container {
+    max-width: 900px;
+    margin-top: 1cm;
+    margin-left: 11.5cm;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.highlighted-header {
+    color: red; /* Highlight the header text in red */
+}
+
+
 .product-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns */
