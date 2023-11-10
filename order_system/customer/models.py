@@ -1,4 +1,5 @@
 from django.db import models
+# Create your models here.
 
 class MenuItem(models.Model):
     name=models.CharField(max_length=100)
@@ -9,8 +10,14 @@ class MenuItem(models.Model):
 
     def __str__(self):
        return self.name
+
 class Category(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    class Meta:
+        ordering = ('name',)
+
 
     def __str__(self):
         return self.name
@@ -25,4 +32,4 @@ class OrderModel(models.Model):
        
        
 
-# Create your models here.
+
