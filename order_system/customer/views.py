@@ -16,61 +16,55 @@ class Contact(View):
 
 class Order(View):
     def get(self, request, *args, **kwargs):
-        pass
-        #appetizers=MenuItem.objetcs.filter(category__name__contains="Appertizer")
-        #entres = MenuItem.objetcs.filter(category__name__contains="Entre")
-        #desserts = MenuItem.objetcs.filter(category__name__contains="Dessert")
-        #drinks= MenuItem.objetcs.filter(category__name__contains="Drink")
+        whole_cakes = MenuItem.objects.filter(category__name__contains="Whole Cakes")
+        dessert_platters = MenuItem.objects.filter(category__name__contains="Dessert Platters")
+        cake_slices = MenuItem.objects.filter(category__name__contains="Cake Slices")
 
-        context={
-            #'appertizers': appertizers,
-            #'entres':entres,
-            #'desserts':desserts,
-             #"drinks":drinks,
+
+        context = {
+            'Whole Cakes': whole_cakes,
+            'Dessert Platters': dessert_platters,
+            'Cake Slices': cake_slices,
         }
 
-        #render the template
-        return render(request,"customer/order.html",context)
+        return render(request,"customer/order.html", context)
 
-def post(self,request,*args,**kwargs):
+def post(self, request, *args, **kwargs):
 
-    order_items={
-        'items':[]
+    order_items = {
+        'items': []
     }
-    #items=request.POST.getlist("items[]")
-    #for item in items:
-    #    menu_item=MenuItem.objects.get(pk__contains=int(item))
-    #    item_data={
-    #        'id':menu_item.pk,
-    #       'name':menu_item.name,
-    #        'price':menu_item.price
 
-        #}
+    items = request.POST.getlist("items[]")
+    for item in items:
+        menu_item = MenuItem.objects.get(pk__contains=int(item))
+        item_data = {
+            'id': menu_item.pk,
+            'name': menu_item.name,
+            'price': menu_item.price
 
-        #order_items['items'].append(item_data)
-        #price=0
-        #item_ids=[]
+        }
 
-        #for item in order_items['items']:
-        #    price += item['price']
-        #    item_ids.append(item['id'])
+        order_items['items'].append(item_data)
+        price=0
+        item_ids=[]
 
-        #order=OrderModel.objects.create(price=price)
-        #order.items.add(*item_id)
-        #context={
-        #    'items':order_items['items'],
-        #    'price':price
-        #}
-        #return render(request,'customer/order_confirmation.html',context)
+        for item in order_items['items']:
+            price += item['price']
+            item_ids.append(item['id'])
 
-        #order=OrderModel.objects.create(price=price)
+        order = OrderModel.objects.create(price=price)
+        order.items.add(*item_id)
+        context = {
+            'items': order_items['items'],
+            'price': price
+        }
+        return render(request,'customer/order_confirmation.html', context)
 
-
-
+        order = OrderModel.objects.create(price=price)
 
 
-#get every item from each category
-#pass into context
 
-#render the template
-# Create your views here.
+
+
+

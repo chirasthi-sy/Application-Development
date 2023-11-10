@@ -5,7 +5,7 @@ class MenuItem(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='menu_images/')
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     category = models.ManyToManyField('Category', related_name='item')
 
     def __str__(self):
