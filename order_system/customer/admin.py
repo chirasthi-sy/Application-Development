@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Menuitem,Category,OrderModel
-# Register your models here.
+from .models import MenuItem,Category,OrderModel
+# Register your models here.l
 
 from .models import Category
 
