@@ -37,7 +37,7 @@ class Order(View):
         street = request.POST.get('street')
         city = request.POST.get('city')
         state=request.POST.get('state')
-        zip_code=request.POST.get('zip_code')
+        zip_code=request.POST.get('zip')
 
 
         order_items = {
@@ -72,7 +72,21 @@ class Order(View):
             zip_code=zip_code
         )
         order.items.add(*item_ids)
+
         #after  everything is done, send confirmatin email to the user
+        body=("Thank you for your order!Your food is being made and will be deliveerd soon \n"
+         f'Your Total:{price}\n'
+        'Thank you again for your order!')
+
+
+        send_mail(
+            'Thank You For Your Order!'
+            'body,'
+            'sponge@company.com',
+            [email],
+            fail_silently=False
+        )
+
         context = {
             'items': order_items['items'],
             'price': price
