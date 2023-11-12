@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,8 +103,64 @@
         </div>
         {% endfor %}
             </div>
+        <div class="form-group pt-3">
+            <label for ="name"> FUll Name</label>
+            <input required class="form-control" type="text" placeholder="Your Name" name="name"/>
+        </div>
+         <div class="form-group pt-3">
+            <label for ="name">Email Address</label>
+            <input required class="form-control" type="text" placeholder="sponge#company.com" name="email"/>
+        </div>
+         <div class="form-group pt-3">
+            <label for ="name">Sreet Address</label>
+            <input required class="form-control" type="text" placeholder="5/5 Sri wickrama wattla" name="street"/>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                 <div class="form-group pt-3">
+                    <label for ="name"> City</label>
+                    <input required class="form-control" type="text" placeholder="wattala" name="city"/>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                 <div class="form-group pt-3">
+                    <label for ="name">State</label>
+                    <input required class="form-control" type="text" placeholder="Colombo" name="state"/>
+              </div>
+            </div>
 
-        <button class="btn btn-danger mt-5">Place Order!</button>
+               <div class="col-md-4 col-sm-12">
+                   <div class="form-group pt-3">
+                       <label for ="name">Zip Code</label>
+                       <input required class="form-control" type="text" placeholder="9165" name="zip"/>
+                   </div>
+               </div>
+            </div>
+    <button type="button" class="btn btn-primary" data-toggle="model" data-target="#submitModel">
+       Submit Order!
+    </button>
+         <!-- Modal -->
+            <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModal
+Label" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="submitModal
+Label">Submit Your Order!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">GoBack</button>
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
     </form>
 
 </div>
