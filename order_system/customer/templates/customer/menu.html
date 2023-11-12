@@ -37,78 +37,99 @@
             </a>
         </div>
     </header>
-<div class="best_sellers-container">
-        <h2 class="highlighted-header">Best Sellers</h2>
+
+<div class="page-name">
+        <h1 class="highlighted-header">Menu</h1>
 
 
 
-
-
-
+    <form method="POST">
+        {% csrf_token %}
+        <div class = "pt-5">
+        {% for cake in WholeCakes %}
         <div class="product-card">
-            <img class="product-image" src="https://tse1.mm.bing.net/th?id=OIP.AdXNnvFw99JHL1XgyNzzwAHaF0&pid=Api&P=0&h=220" alt="Choco Fudge Cake">
-            <p class="product-title">Choco Fudge Cake</p>
-            <p class="product-details">More details</p>
-            <p class="product-price">Rs. 2390</p>
-            <div class="add-to-cart">Add to Cart</div>
+            <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
+            <p class="product-title">{{ cake.name }}</p>
+            <p class="product-details">{{ cake.description }}</p>
+            <p class="product-price">{{ cake.price }}</p>
+            <div class="form-group form-check">
+                <button type="button" class="add-to-cart-btn" data-item-id="{{ cake.pk }}" data-item-name="{{ cake.name }}" data-item-price="{{ cake.price }}">
+                                Add to Cart
+                </button>
+            </div>
         </div>
+        {% endfor %}
+            </div>
 
-
-
-
+        <div class = "pt-5">
+        {% for cake in DessertPlatters %}
         <div class="product-card">
-    <img class="product-image" src="https://tse4.mm.bing.net/th?id=OIP.AsIaSNWklbedFocpcMPo1gHaHa&pid=Api&P=0&h=220" alt="White Chocolate Raspberry Cheesecake">
-    <p class="product-title">Raspberry Cheesecake Slice</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 1000</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
+            <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
+            <p class="product-title">{{ cake.name }}</p>
+            <p class="product-details">{{ cake.description }}</p>
+            <p class="product-price">{{ cake.price }}</p>
+            <div class="form-group form-check">
+                <button type="button" class="add-to-cart-btn" data-item-id="{{ cake.pk }}" data-item-name="{{ cake.name }}" data-item-price="{{ cake.price }}">
+                                Add to Cart
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+            </div>
 
-<div class="product-card">
-    <img class="product-image" src="https://tse1.mm.bing.net/th?id=OIP.nOXHAqY4TkQT1GC5P-MEngHaHg&pid=Api&P=0&h=220" alt="Blackberry Cheesecake">
-    <p class="product-title">Blackberry Cheesecake Slice</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 1290</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
+        <div class = "pt-5">
+        {% for cake in CakeSlices %}
+        <div class="product-card">
+            <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
+            <p class="product-title">{{ cake.name }}</p>
+            <p class="product-details">{{ cake.description }}</p>
+            <p class="product-price">{{ cake.price }}</p>
+            <div class="form-group form-check">
+                <button type="button" class="add-to-cart-btn" data-item-id="{{ cake.pk }}" data-item-name="{{ cake.name }}" data-item-price="{{ cake.price }}">
+                                Add to Cart
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+            </div>
 
-<div class="product-card">
-    <img class="product-image" src="https://www.milkmaid.lk/sites/default/files/2022-05/thumbnail-image.jpg" alt="Vanilla Ribbon Cake">
-    <p class="product-title">Vanilla Ribbon Cake</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 1990</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
-<div class="product-card">
-    <img class="product-image" src="https://tse1.mm.bing.net/th?id=OIP.8LuCpFbnM1-dIpcNaYs0EgHaHa&pid=Api&P=0&h=220" alt="Red Velvet Cake">
-    <p class="product-title">Red Velvet Cake</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 2790</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
-<div class="product-card">
-    <img class="product-image" src="https://tse2.mm.bing.net/th?id=OIP.KfeBNDf46NDPUF2lOONALwHaI4&pid=Api&P=0&h=220" alt="Chocolate Pyramids">
-    <p class="product-title">Chocolate Pyramids</p>
-    <p class="product-details">More details</p>
-    <p class "product-price">Rs. 400</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
+        <button class="btn btn-dark mt-5">Place Order!</button>
+    </form>
 
-<div class="product-card">
-    <img class="product-image" src="https://tse3.mm.bing.net/th?id=OIP.-nQp7bz_kH03OG81RGncCwHaJv&pid=Api&P=0&h=220" alt="Sweet Platter">
-    <p class="product-title">Sweet Platter</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 9900</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
 
-<div class="product-card">
-    <img class="product-image" src="https://tse2.mm.bing.net/th?id=OIP.kUHQSPu6vpGa4PklkPD4nQHaE8&pid=Api&P=0&h=220" alt="Medium Platter">
-    <p class="product-title">Medium Platter</p>
-    <p class="product-details">More details</p>
-    <p class="product-price">Rs. 5500</p>
-    <div class="add-to-cart">Add to Cart</div>
-</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var itemId = this.getAttribute('data-item-id');
+                var itemName = this.getAttribute('data-item-name');
+                var itemPrice = this.getAttribute('data-item-price');
+
+
+
+                // For demonstration purposes, let's add a hidden input to the form
+                var hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'items[]';
+                hiddenInput.value = itemId;
+
+                var form = button.closest('form');
+                form.appendChild(hiddenInput);
+
+                // Optional: Display a confirmation or perform any other desired actions
+                alert('Added ' + itemName + ' to the cart!');
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
 
 </div>
 

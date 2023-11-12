@@ -23,9 +23,9 @@ class Order(View):
 
 
         context = {
-            'Whole Cakes': whole_cakes,
-            'Dessert Platters': dessert_platters,
-            'Cake Slices': cake_slices,
+            'WholeCakes': whole_cakes,
+            'DessertPlatters': dessert_platters,
+            'CakeSlices': cake_slices,
         }
 
         return render(request,"customer/menu.html", context)

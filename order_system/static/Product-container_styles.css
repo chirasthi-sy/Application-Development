@@ -50,7 +50,7 @@
 
         .product-price {
             font-weight: bold;
-            color: green;
+            color: red;
         }
 
         .add-to-cart {
@@ -59,4 +59,28 @@
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        .add-to-cart-btn{
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #800000;
+        }
+
+        .btn btn-dark mt-5 {
+            background-color: red !important;
+            color: white !important;
+            padding: 5px 10px !important;
+            border-radius: 5px !important;
+            cursor:pointer !important;
+        }
+
+        .btn btn-dark mt-5 {
+            background-color: #800000 !important;
         }

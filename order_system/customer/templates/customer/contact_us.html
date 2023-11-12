@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li><a href="{% url 'home' %}"><div class="icon home-icon">Home</div></a></li>
-            <li><a href="menu.html"><div class="icon items-icon">Items</div></a></li>
+            <li><a href="{% url 'order' %}"><div class="icon items-icon">Items</div></a></li>
             <li><a href="{% url 'contact' %}"><div class="icon contact-icon"> Contact   Us</div></a></li>
             <li><a href="{% url 'about' %}"><div class="icon contact-icon"> About</div></a></li>
         </ul>
@@ -42,7 +42,6 @@
         <br>
 
      <div class="contact-info text-center"> <!-- Center the content within the container -->
-        <h2>Contact Information</h2>
         <p><strong>Open Hours:</strong></p>
         <p>Monday - Saturday: 7:00am to 9:00pm</p>
         <p>Sundays: 8:00am to 5:00pm</p>
