@@ -28,7 +28,7 @@ class Order(View):
             'Cake Slices': cake_slices,
         }
 
-        return render(request,"customer/order.html", context)
+        return render(request,"customer/menu.html", context)
 
 def post(self, request, *args, **kwargs):
 
@@ -60,9 +60,9 @@ def post(self, request, *args, **kwargs):
         'items': order_items['items'],
         'price': price
     }
-    return render(request,'customer/order_confirmation.html', context)
+    return render(request,'order confirmation message.html', context)
 
-    order = OrderModel.objects.create(price=price)
+
 
 
 
