@@ -31,18 +31,31 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTHENTICATION_BACKENDS=[
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
+]
 INSTALLED_APPS = [
+    'customer',
+    'management',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'customer',
     'management'
 ]
-
+SITE_ID=1
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
@@ -128,7 +141,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL ='/media/'
 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
-
+ACCOUNT_ADAPTER='management.account_adapter.NoNewUsersAccountAdapter'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
