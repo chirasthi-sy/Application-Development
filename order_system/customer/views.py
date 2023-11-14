@@ -98,16 +98,16 @@ class Order(View):
         return render(request, 'customer/order confirmation message.html', context)
 
 
-class OrderConfirmationView(View):
-    order = OrderModel.objects.get(pk=pk)
+#class OrderConfirmationView(View):
+#    order = OrderModel.objects.get(pk=pk)
 
-    def get(self, request, pk, *args, **kwargs):
-        context = {
-            'pk': order.pk,
-            'items': order.items,
-            'price': order.price,
-        }
-        return render(request, 'customer/order_confirmation.html', context)
+#    def get(self, request, pk, *args, **kwargs):
+#        context = {
+#            'pk': order.pk,
+#            'items': order.items,
+#            'price': order.price,
+#        }
+#        return render(request, 'customer/order_confirmation.html', context)
 
 
 
