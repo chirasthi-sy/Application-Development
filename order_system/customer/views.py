@@ -32,12 +32,14 @@ class Order(View):
         return render(request,"customer/menu.html", context)
 
     def post(self, request, *args, **kwargs):
-        name=request.POST.get('name')
-        email= request.POST.get('email')
-        street = request.POST.get('street')
-        city = request.POST.get('city')
-        state=request.POST.get('state')
-        zip_code=request.POST.get('zip')
+        name = request.POST.get('customer_name')
+        number = request.POST.get('contact_number')
+        email = request.POST.get('email')
+        address = request.POST.get('delivery_address')
+        delivery_date = request.POST.get('delivery_date')
+        delivery_time = request.POST.get('delivery_time')
+        special_notes = request.POST.get('special_notes')
+        payment_option = request.POST.get('payment_option')
 
 
         order_items = {
@@ -65,11 +67,13 @@ class Order(View):
         order = OrderModel.objects.create(
             price=price,
             name=name,
+            number=number,
             email=email,
-            street=street,
-            city=city,
-            state=state,
-            zip_code=zip_code
+            address=address,
+            delivery_date=delivery_date,
+            delivery_time=delivery_time,
+            special_notes=special_notes,
+            payment_option=payment_option
         )
         order.items.add(*item_ids)
 
@@ -103,7 +107,7 @@ class OrderConfirmationView(View):
             'items': order.items,
             'price': order.price,
         }
-        return render(request, 'customer/order_confirmation.html', context
+        return render(request, 'customer/order_confirmation.html', context)
 
 
 

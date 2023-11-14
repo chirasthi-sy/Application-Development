@@ -21,29 +21,35 @@
                 <!-- Customer Name -->
                 <div class="mb-3">
                     <label for="customer_name" class="form-label">Customer Name:</label>
-                    <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+                    <input type="text" required class="form-control" id="customer_name" name="customer_name">
                 </div>
 
                 <!-- Contact Number -->
                 <div class="mb-3">
                     <label for="contact_number" class="form-label">Contact Number:</label>
-                    <input type="tel" class="form-control" id="contact_number" name="contact_number" required>
+                    <input type="tel" required class="form-control" id="contact_number" placeholder="0712345678" name="contact_number" >
+                </div>
+
+                <div class = "mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input required class="form-control" type="text" id = "email" placeholder="example@company.com" name="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g., example@company.com)" />
                 </div>
 
                 <!-- Delivery Address -->
                 <div class="mb-3">
                     <label for="delivery_address" class="form-label">Delivery Address:</label>
-                    <textarea class="form-control" id="delivery_address" name="delivery_address" rows="3" required></textarea>
+                    <textarea required class="form-control" id="delivery_address" name="delivery_address" rows="3"></textarea>
                 </div>
 
                 <!-- Delivery Date and Time -->
                 <div class="mb-3">
                     <label for="delivery_date" class="form-label">Delivery Date:</label>
-                    <input type="date" class="form-control" id="delivery_date" name="delivery_date" required>
+                    <input type="date" required class="form-control" id="delivery_date" name="delivery_date" >
                 </div>
                 <div class="mb-3">
                     <label for="delivery_time" class="form-label">Delivery Time:</label>
-                    <input type="time" class="form-control" id="delivery_time" name="delivery_time" required>
+                    <input type="time" required class="form-control" id="delivery_time" name="delivery_time" >
                 </div>
 
                 <!-- Special Notes -->
@@ -62,8 +68,28 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-danger">Proceed to Checkout</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#submitModal">
+                    Proceed to Checkout
+                </button>
+                <!--<button type="submit" class="btn btn-danger">Proceed to Checkout</button> -->
+                <!-- Modal -->
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="submitModalLabel">Submit Your Order!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
 
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Go Back</button>
+                        <button type="submit" class="btn btn-dark">Proceed to Checkout</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
     </form>
