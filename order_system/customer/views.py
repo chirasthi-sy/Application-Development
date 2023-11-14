@@ -1,11 +1,13 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.views import View
 from django.core.mail import send_mail
 from .models import MenuItem, Category, OrderModel
 
+
 class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/Home_page.html')
+
 
 class About(View):
     def get(self, request, *args, **kwargs):
@@ -16,12 +18,12 @@ class Contact(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/contact_us.html')
 
+
 class Order(View):
     def get(self, request, *args, **kwargs):
         whole_cakes = MenuItem.objects.filter(category__name__contains="Whole Cakes")
         dessert_platters = MenuItem.objects.filter(category__name__contains="Dessert Platters")
         cake_slices = MenuItem.objects.filter(category__name__contains="Cake Slices")
-
 
         context = {
             'WholeCakes': whole_cakes,
@@ -29,7 +31,7 @@ class Order(View):
             'CakeSlices': cake_slices,
         }
 
-        return render(request,"customer/menu.html", context)
+        return render(request, "customer/menu.html", context)
 
     def post(self, request, *args, **kwargs):
         name = request.POST.get('customer_name')
@@ -40,7 +42,6 @@ class Order(View):
         delivery_time = request.POST.get('delivery_time')
         special_notes = request.POST.get('special_notes')
         payment_option = request.POST.get('payment_option')
-
 
         order_items = {
             'items': []
@@ -57,8 +58,8 @@ class Order(View):
             }
 
             order_items['items'].append(item_data)
-            price=0
-            item_ids=[]
+            price = 0
+            item_ids = []
 
         for item in order_items['items']:
             price += item['price']
@@ -77,19 +78,12 @@ class Order(View):
         )
         order.items.add(*item_ids)
 
-        #after  everything is done, send confirmatin email to the user
-        body=("Thank you for your order!Your food is being made and will be deliveerd soon \n"
-         f'Your Total:{price}\n'
-        'Thank you again for your order!')
+        body = (
+            f"Thank you for your order! Your cake will be delivered on {delivery_date}.\n Your total is {price}. \n "
+            f"We appreciate your business!")
 
-
-        send_mail(
-            'Thank You For Your Order!'
-            'body,'
-            'sponge@company.com',
-            [email],
-            fail_silently=False
-        )
+        # This will display an email in the console
+        send_mail('Thank You For Your Order!', body, "info@sponge.lk", [email], fail_silently=False)
 
         context = {
             'items': order_items['items'],
@@ -97,9 +91,7 @@ class Order(View):
         }
         return render(request, 'customer/order confirmation message.html', context)
 
-
-
-#class OrderConfirmationView(View):
+# class OrderConfirmationView(View):
 #    order = OrderModel.objects.get(pk=pk)
 
 #    def get(self, request, pk, *args, **kwargs):
@@ -109,10 +101,3 @@ class Order(View):
 #            'price': order.price,
 #        }
 #        return render(request, 'customer/order_confirmation.html', context)
-
-
-
-
-
-
-
