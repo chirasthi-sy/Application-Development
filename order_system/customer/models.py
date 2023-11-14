@@ -27,7 +27,7 @@ class OrderModel(models.Model):
     items = models.ManyToManyField('MenuItem', related_name='order', blank=True)
 
     name = models.CharField(max_length=100, blank=True)
-    number = models.DecimalField(max_digits=10, decimal_places=0)
+    number = models.DecimalField(max_digits=10, decimal_places=0, default=000)
     email = models.CharField(max_length=50, blank=True)
     address = models.CharField(max_length=200, blank=True)
     delivery_date = models.DateField(blank=True, null=True)

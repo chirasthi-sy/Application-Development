@@ -98,6 +98,7 @@ class Order(View):
         return render(request, 'customer/order confirmation message.html', context)
 
 
+
 #class OrderConfirmationView(View):
 #    order = OrderModel.objects.get(pk=pk)
 

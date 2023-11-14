@@ -1,5 +1,5 @@
 {% load static %}
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -97,60 +97,64 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="container mt-5">
 
-            <div class="form-group pt-3">
-                <label for="name">Full Name</label>
-                <input required class="form-control" type="text" placeholder="Your Name" name="name"/>
-            </div>
-            <div class="form-group pt-3">
-                <label for="email">Email Address</label>
-                <input required class="form-control" type="text" placeholder="sponge#company.com" name="email"/>
-            </div>
-            <div class="form-group pt-3">
-                <label for="street">Street Address</label>
-                <input required class="form-control" type="text" placeholder="5/5 Sri wickrama wattla" name="street"/>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group pt-3">
-                        <label for="city">City</label>
-                        <input required class="form-control" type="text" placeholder="wattala" name="city"/>
-                    </div>
+
+        <!-- Customer Details Form -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <!-- Customer Name -->
+                <div class="mb-3">
+                    <label for="customer_name" class="form-label">Customer Name:</label>
+                    <input type="text" required class="form-control" id="customer_name" name="customer_name">
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group pt-3">
-                        <label for="state">State</label>
-                        <input required class="form-control" type="text" placeholder="Colombo" name="state"/>
-                    </div>
+
+                <!-- Contact Number -->
+                <div class="mb-3">
+                    <label for="contact_number" class="form-label">Contact Number:</label>
+                    <input type="tel" required class="form-control" id="contact_number" placeholder="0712345678" name="contact_number" >
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group pt-3">
-                                             <label for="zip">Zip Code</label>
-                    <input required class="form-control" type="text" placeholder="9165" name="zip"/>
+
+                <div class = "mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input required class="form-control" type="text" id = "email" placeholder="example@company.com" name="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g., example@company.com)" />
                 </div>
+
+                <!-- Delivery Address -->
+                <div class="mb-3">
+                    <label for="delivery_address" class="form-label">Delivery Address:</label>
+                    <textarea required class="form-control" id="delivery_address" name="delivery_address" rows="3"></textarea>
+                </div>
+
+                <!-- Delivery Date and Time -->
+                <div class="mb-3">
+                    <label for="delivery_date" class="form-label">Delivery Date:</label>
+                    <input type="date" required class="form-control" id="delivery_date" name="delivery_date" >
+                </div>
+                <div class="mb-3">
+                    <label for="delivery_time" class="form-label">Delivery Time:</label>
+                    <input type="time" required class="form-control" id="delivery_time" name="delivery_time" >
+                </div>
+
+                <!-- Special Notes -->
+                <div class="mb-3">
+                    <label for="special_notes" class="form-label">Special Notes:</label>
+                    <textarea class="form-control" id="special_notes" name="special_notes" rows="3"></textarea>
+                </div>
+
+                <!-- Payment Option -->
+                <div class="mb-3">
+                    <label for="payment_option" class="form-label">Payment Option:</label>
+                    <select class="form-select" id="payment_option" name="payment_option" required>
+                        <option value="cash_on_delivery">Cash on Delivery</option>
+                    </select>
+                </div>
+
+            <button class="btn btn-danger mt-5">Place Order!</button>
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">
-                Submit Order!
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="submitModalLabel">Submit Your Order!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Modal body content goes here -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">GoBack</button>
-                            <button type="submit" class="btn btn-primary">Place Order</button>
-                        </div>
-                    </div>
-                </div>
+        </div>
             </div>
         </form>
     </div>
