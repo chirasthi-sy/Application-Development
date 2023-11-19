@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.timezone import datetime
 from customer.models import OrderModel
 
 # Create your views here.
 
-class Dashboard(View):
+class Dashboard(LoginRequiredMixin,UserPassesTestMixin,View):
     def get(self, request, *args, **kwargs):
         today = datetime.today()
         orders = OrderModel.objects.filter(
@@ -20,3 +21,5 @@ class Dashboard(View):
             'total_orders': len(orders)
         }
         return render(request, 'management/dashboard.html', context)
+    def test_func(self):
+        return self.request.user.groups.filter(name='Staff').exists()
