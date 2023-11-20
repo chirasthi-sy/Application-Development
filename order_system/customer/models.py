@@ -1,4 +1,6 @@
 from django.db import models
+
+
 # Create your models here.
 
 class MenuItem(models.Model):
@@ -9,17 +11,18 @@ class MenuItem(models.Model):
     category = models.ManyToManyField('Category', related_name='item')
 
     def __str__(self):
-       return self.name
+        return self.name
+
 
 class Category(models.Model):
-    name=models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
 
     class Meta:
         ordering = ('name',)
 
-
     def __str__(self):
         return self.name
+
 
 class OrderModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
@@ -36,11 +39,7 @@ class OrderModel(models.Model):
     payment_option_choices = [('cash', 'Cash on Delivery')]
     payment_option = models.CharField(max_length=10, choices=payment_option_choices, default='cash')
     is_shipped = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Order:{self.created_on.strftime("%b %d %I:%M %p")}'
-       
-
-
-
-

@@ -33,7 +33,7 @@ class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
 
 
 class OrderDetails(LoginRequiredMixin,UserPassesTestMixin,View):
-    def get(self,request,pk,*args,**kwargs):
+    def get(self, request, pk, *args,**kwargs):
         order = OrderModel.objects.get(pk=pk)
         context = {
             'order': order
@@ -44,6 +44,7 @@ class OrderDetails(LoginRequiredMixin,UserPassesTestMixin,View):
     def post(self, request, pk, *args,**kwargs):
         order = OrderModel.objects.get(pk=pk)
         order.is_shipped = True
+        order.is_paid = True
         order.save()
 
         context = {
@@ -52,4 +53,4 @@ class OrderDetails(LoginRequiredMixin,UserPassesTestMixin,View):
         return render(request, "restaurant/order-details.html", context)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Staff').exists()
+        return self.request.user.groups.filter(name='staff').exists()
