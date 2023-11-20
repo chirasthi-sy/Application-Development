@@ -35,7 +35,6 @@ class OrderModel(models.Model):
     special_notes = models.CharField(max_length=350, blank=True)
     payment_option_choices = [('cash', 'Cash on Delivery')]
     payment_option = models.CharField(max_length=10, choices=payment_option_choices, default='cash')
-
     is_shipped = models.BooleanField(default=False)
 
     def __str__(self):
