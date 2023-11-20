@@ -35,8 +35,8 @@ class OrderModel(models.Model):
     special_notes = models.CharField(max_length=350, blank=True)
     payment_option_choices = [('cash', 'Cash on Delivery')]
     payment_option = models.CharField(max_length=10, choices=payment_option_choices, default='cash')
-    is_paid = models.BooleanField(default=False)
-    is_shipped=models.BooleanField(default=False)
+
+    is_shipped = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Order:{self.created_on.strftime("%b %d %I:%M %p")}'

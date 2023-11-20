@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail
-from .models import MenuItem, Category, OrderMod
+from .models import MenuItem, Category, OrderModel
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -100,26 +100,5 @@ class OrderConfirmation(View):
             'price': order.price,
         }
         return render(request, 'customer/order confirmation message.html', context)
-    def test_func(self):
-        return self.request.user.groups.filter(name="Staff").exists()
 
-class OrderDetails(LoginRequiredMixin,UserPassesTestMixin,View):
-    def get(self,request,pk,*args,**kwargs):
-        order=OrderModel.objects.get(pk=pk)
-        context={
-            'order':order
-
-        }
-        return render(request,'restaurant/order-details.html',context)
-    def post(self,request,pk,*args,**kwargs):
-        order=OrderModel.objects.get(pk=pk)
-        order.is_shipped=True
-        order.save()
-
-contet={
-"order":order
-}
-return render(request,"restaurant/order-details.html",context)
-def test_fun(self):
-    return self.request.user.groups.filter(name='Staff').exists()
 
