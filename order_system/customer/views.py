@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import MenuItem, Category, OrderModel
+
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -11,6 +13,24 @@ class Index(View):
 class About(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/about_us.html')
+
+
+class Login(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'management/dashboard.html')
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='customers').exists()
+
+
+def custom_profile_view(request):
+    # Check if the user is in the 'staff' group
+    if request.user.groups.filter(name='staff').exists():
+        # Redirect staff to the dashboard
+        return redirect('management/dashboard.html')
+    else:
+        # Redirect customers to the default profile page
+        return redirect('account_profile')
 
 
 class Contact(View):
@@ -89,7 +109,8 @@ class Order(View):
             'price': price
         }
         return redirect('order-confirmation', pk=order.pk)
-        #return render(request, 'customer/order confirmation message.html', context)
+        # return render(request, 'customer/order confirmation message.html', context)
+
 
 class OrderConfirmation(View):
     def get(self, request, pk, *args, **kwargs):
@@ -100,5 +121,3 @@ class OrderConfirmation(View):
             'price': order.price,
         }
         return render(request, 'customer/order confirmation message.html', context)
-
-
