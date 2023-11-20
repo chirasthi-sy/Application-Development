@@ -15,8 +15,11 @@ class Dashboard(LoginRequiredMixin,UserPassesTestMixin,View):
         for order in orders:
             total_revenue += order.price
 
+            if not order.is_shipped:
+                unshipped_orders.append(order)
+
         context = {
-            'orders': orders,
+            'orders':unshipped_orders,
             'total_revenue': total_revenue,
             'total_orders': len(orders)
         }
