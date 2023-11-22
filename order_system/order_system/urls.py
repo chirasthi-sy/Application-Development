@@ -31,4 +31,6 @@ urlpatterns = [
     path('contact/', Contact.as_view(), name='contact'),
     path('menu/', Order.as_view(), name='order'),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation')
+    path('dashboard/', CustomerDashboard.as_view(), name='customer_dashboard'),
+    path('order/<int:pk>/', OrderDetails.as_view(), name='order_details'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

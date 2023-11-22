@@ -121,3 +121,40 @@ class OrderConfirmation(View):
             'price': order.price,
         }
         return render(request, 'customer/order confirmation message.html', context)
+
+
+class CustomerDashboard(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        orders = OrderModel.objects.filter(user=user)
+
+        context = {
+            'orders': orders,
+            'total_orders': len(orders)
+        }
+        return render(request, 'customer/customer_dashboard.html', context)
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='customer').exists()
+
+
+class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request, pk, *args, **kwargs):
+        order = OrderModel.objects.get(pk=pk)
+        context = {
+            'order': order
+        }
+        return render(request, 'customer/order-details.html', context)
+
+    def post(self, request, pk, *args, **kwargs):
+        # Assuming you want to update the order status or perform some action
+        order = OrderModel.objects.get(pk=pk)
+        # Add your logic here to update the order status or perform other actions
+
+        context = {
+            "order": order
+        }
+        return render(request, "customer/order-details.html", context)
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='customer').exists()
