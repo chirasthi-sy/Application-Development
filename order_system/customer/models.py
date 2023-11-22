@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from allauth.account.signals import user_signed_up
+from django.contrib.auth.models import Group, User
 
 
 # Create your models here.
@@ -43,3 +47,21 @@ class OrderModel(models.Model):
 
     def __str__(self):
         return f'Order:{self.created_on.strftime("%b %d %I:%M %p")}'
+
+
+@receiver(user_signed_up)
+def assign_to_customer_group(sender, request, user, **kwargs):
+    # Get or create the 'customer' group
+    customer_group, created = Group.objects.get_or_create(name='customers')
+
+    # Add the user to the 'customer' group
+    user.groups.add(customer_group)
+
+@receiver(post_save, sender=User)
+def add_to_customer_group(sender, instance, created, **kwargs):
+    if created:
+        # Get or create the 'customer' group
+        customer_group, created = Group.objects.get_or_create(name='customers')
+
+        # Add the user to the 'customer' group
+        instance.groups.add(customer_group)
