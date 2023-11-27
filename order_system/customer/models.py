@@ -4,7 +4,6 @@ from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
 from django.contrib.auth.models import Group, User
 
-
 # Create your models here.
 
 class MenuItem(models.Model):
@@ -33,7 +32,7 @@ class OrderModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     items = models.ManyToManyField('MenuItem', related_name='order', blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     name = models.CharField(max_length=100, blank=True)
     number = models.DecimalField(max_digits=10, decimal_places=0, default=000)
     email = models.CharField(max_length=50, blank=True)

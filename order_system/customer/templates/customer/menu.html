@@ -45,7 +45,7 @@
             </div>
         </nav>
         <div id="cart-icon">
-            <a href="{% url 'dashboard' %}">
+            <a href="{% url 'customer-dashboard' %}">
                 <img src="{% static 'user_icon.png' %}" width="60px" height="60px">
                 </a>
         </div>
@@ -163,7 +163,7 @@
     <footer class="custom-footer text-center">
         <div class="container">
             <p>&copy; 2023 Sponge.lk. All Rights Reserved.</p>
-            <p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'contact' %}">Contact Us</a></p>
+            <p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'contact' %}">Contact Us</a></a> | <a href="{% url 'dashboard' %}">Management Login</a></p>
         </div>
     </footer>
 </body>

@@ -84,7 +84,6 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li><a href="{% url 'home' %}"><div class="icon home-icon">Home</div></a></li>
                         <li><a href="{% url 'order' %}"><div class="icon items-icon">Items</div></a></li>
-                        <li><a href="{% url 'dashboard' %}"><div class="icon home-icon">Log In</div></a></li>
                         <li><a href="{% url 'contact' %}"><div class="icon contact-icon"> Contact   Us</div></a></li>
                         <li><a href="{% url 'about' %}"><div class="icon contact-icon"> About</div></a></li>
                     </ul>
@@ -92,7 +91,7 @@
             </div>
         </nav>
         <div id="cart-icon">
-            <a href="{% url 'dashboard' %}">
+            <a href="{% url 'customer-dashboard' %}">
                 <img src="{% static 'user_icon.png' %}" width="60px" height="60px">
                 </a>
         </div>
@@ -192,7 +191,7 @@
 <footer class="custom-footer text-center">
         <div class="container">
             <p>&copy; 2023 Sponge.lk. All Rights Reserved.</p>
-            <p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'contact' %}">Contact Us</a></p>
+            <p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'contact' %}">Contact Us</a> | <a href="{% url 'dashboard' %}">Management Login</a></p>
         </div>
     </footer>
 </body>

@@ -16,14 +16,7 @@ class About(View):
 
 
 
-def custom_profile_view(request):
-    # Check if the user is in the 'staff' group
-    if request.user.groups.filter(name='staff').exists():
-        # Redirect staff to the dashboard
-        return redirect('management/dashboard.html')
-    else:
-        # Redirect customers to the default profile page
-        return redirect('account_profile')
+
 
 
 class Contact(View):
