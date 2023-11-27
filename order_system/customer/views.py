@@ -15,13 +15,6 @@ class About(View):
         return render(request, 'customer/about_us.html')
 
 
-class Login(LoginRequiredMixin, UserPassesTestMixin, View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'management/dashboard.html')
-
-    def test_func(self):
-        return self.request.user.groups.filter(name='customers').exists()
-
 
 def custom_profile_view(request):
     # Check if the user is in the 'staff' group
@@ -132,10 +125,10 @@ class CustomerDashboard(LoginRequiredMixin, UserPassesTestMixin, View):
             'orders': orders,
             'total_orders': len(orders)
         }
-        return render(request, 'customer/customer_dashboard.html', context)
+        return render(request, 'customer/customer dashboard.html', context)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='customer').exists()
+        return self.request.user.groups.filter(name='customers').exists()
 
 
 class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
@@ -157,4 +150,4 @@ class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
         return render(request, "customer/order-details.html", context)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='customer').exists()
+        return self.request.user.groups.filter(name='customers').exists()
