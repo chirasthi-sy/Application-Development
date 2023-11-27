@@ -28,6 +28,21 @@
     </div>
         <p class="text-center mt-4">Your order has been confirmed, and we will deliver it on time. We appreciate your business!</p>
     </div>
+    <div class="container text-center">
+    <button class="btn btn-danger" onclick="signOut()">Log Out</button>
+    <button class="btn btn-warning" onclick="order()">Return to Dashboard</button>
+</div>
+
+<script>
+    function signOut() {
+        // Redirect to the specified URL
+        window.location.href = "{% url 'account_logout' %}";
+    }
+    function order() {
+        // Redirect to menu page
+        window.location.href = "{% url 'customer-dashboard' %}";
+    }
+</script>
 
     <footer class="custom-footer text-center mt-5">
         <div class="container">

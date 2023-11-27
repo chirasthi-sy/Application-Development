@@ -15,10 +15,6 @@ class About(View):
         return render(request, 'customer/about_us.html')
 
 
-
-
-
-
 class Contact(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/contact_us.html')
@@ -48,6 +44,8 @@ class Order(View):
         special_notes = request.POST.get('special_notes')
         payment_option = request.POST.get('payment_option')
 
+        user = request.user
+
         order_items = {
             'items': []
         }
@@ -71,6 +69,7 @@ class Order(View):
             item_ids.append(item['id'])
 
         order = OrderModel.objects.create(
+            user=user,
             price=price,
             name=name,
             number=number,
@@ -113,10 +112,14 @@ class CustomerDashboard(LoginRequiredMixin, UserPassesTestMixin, View):
     def get(self, request, *args, **kwargs):
         user = self.request.user
         orders = OrderModel.objects.filter(user=user)
+        total_spent = 0
+        for order in orders:
+            total_spent += order.price
 
         context = {
             'orders': orders,
-            'total_orders': len(orders)
+            'total_orders': len(orders),
+            'total_spent': total_spent
         }
         return render(request, 'customer/customer dashboard.html', context)
 

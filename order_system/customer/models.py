@@ -28,7 +28,7 @@ class Category(models.Model):
 
 
 class OrderModel(models.Model):
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     items = models.ManyToManyField('MenuItem', related_name='order', blank=True)
