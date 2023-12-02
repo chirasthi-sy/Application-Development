@@ -74,10 +74,6 @@
                 {% if order.is_shipped %}
                 <p><i style="color: green;" class="fas fa-check"></i><span class="pl-2">Order Has Been Shipped!</span></p>
                 {% else %}
-              <form method="POST">
-                  {% csrf_token %}
-                   <button type="submit" class="btn-outline-success">Mark as Shipped</button>
-              </form>
               {% endif %}
       </div>
       </div>

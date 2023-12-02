@@ -133,17 +133,7 @@ class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
         context = {
             'order': order
         }
-        return render(request, 'customer/order-details.html', context)
-
-    def post(self, request, pk, *args, **kwargs):
-        # Assuming you want to update the order status or perform some action
-        order = OrderModel.objects.get(pk=pk)
-        # Add your logic here to update the order status or perform other actions
-
-        context = {
-            "order": order
-        }
-        return render(request, "customer/order-details.html", context)
+        return render(request, 'customer/order details.html', context)
 
     def test_func(self):
         return self.request.user.groups.filter(name='customers').exists()
