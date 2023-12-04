@@ -24,10 +24,23 @@
 </head>
 
 <body>
-<div class="text-center">
-            <!-- Company Logo -->
-            <img src="https://www.sponge.lk/Images/SpongeLogo.png" alt="Sponge Logo" width="150px" height="100px">
-        </div>
+<div class="container text-center">
+        <!-- Company Logo -->
+        <img src="https://www.sponge.lk/Images/SpongeLogo.png" alt="Sponge Logo" width="150px" height="100px">
+    </div>
+<br>
+<br>
+    <div class="container text-center">
+        <button class="btn btn-danger" onclick="signOut()">Log Out</button>
+    </div>
+
+    <script>
+        function signOut() {
+            // Redirect to the specified URL
+            window.location.href = "{% url 'account_logout' %}";
+        }
+    </script>
+
    <div class="container mt-5">
        <div class="row justify-content-center">
            <div class="col-md-5">

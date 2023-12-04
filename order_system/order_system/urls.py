@@ -16,19 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from customer.views import Index, About, Contact, Order, OrderConfirmation, custom_profile_view
+from customer.views import Index, About, Contact, Order, OrderConfirmation
 from django.conf import settings
 from django.conf.urls.static import static
 
-#created url
+# created url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('accounts/profile/', custom_profile_view, name='custom_profile_view'),
+    path('customer/', include('customer.urls')),
     path('management/', include('management.urls')),
-    path('', Index.as_view(),name='home'),
-    path('about/', About.as_view(),name='about'),
+    path('', Index.as_view(), name='home'),
+    path('about/', About.as_view(), name='about'),
     path('contact/', Contact.as_view(), name='contact'),
     path('menu/', Order.as_view(), name='order'),
-    path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation')
+    path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation'),
+
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

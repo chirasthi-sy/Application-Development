@@ -15,24 +15,6 @@ class About(View):
         return render(request, 'customer/about_us.html')
 
 
-class Login(LoginRequiredMixin, UserPassesTestMixin, View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'management/dashboard.html')
-
-    def test_func(self):
-        return self.request.user.groups.filter(name='customers').exists()
-
-
-def custom_profile_view(request):
-    # Check if the user is in the 'staff' group
-    if request.user.groups.filter(name='staff').exists():
-        # Redirect staff to the dashboard
-        return redirect('management/dashboard.html')
-    else:
-        # Redirect customers to the default profile page
-        return redirect('account_profile')
-
-
 class Contact(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/contact_us.html')
@@ -62,6 +44,8 @@ class Order(View):
         special_notes = request.POST.get('special_notes')
         payment_option = request.POST.get('payment_option')
 
+        user = request.user
+
         order_items = {
             'items': []
         }
@@ -85,6 +69,7 @@ class Order(View):
             item_ids.append(item['id'])
 
         order = OrderModel.objects.create(
+            user=user,
             price=price,
             name=name,
             number=number,
@@ -121,3 +106,34 @@ class OrderConfirmation(View):
             'price': order.price,
         }
         return render(request, 'customer/order confirmation message.html', context)
+
+
+class CustomerDashboard(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        orders = OrderModel.objects.filter(user=user)
+        total_spent = 0
+        for order in orders:
+            total_spent += order.price
+
+        context = {
+            'orders': orders,
+            'total_orders': len(orders),
+            'total_spent': total_spent
+        }
+        return render(request, 'customer/customer dashboard.html', context)
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='customers').exists()
+
+
+class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
+    def get(self, request, pk, *args, **kwargs):
+        order = OrderModel.objects.get(pk=pk)
+        context = {
+            'order': order
+        }
+        return render(request, 'customer/order details.html', context)
+
+    def test_func(self):
+        return self.request.user.groups.filter(name='customers').exists()
