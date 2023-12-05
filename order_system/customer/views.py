@@ -20,6 +20,20 @@ class Contact(View):
         return render(request, 'customer/contact_us.html')
 
 
+class Menu(View):
+    def get(self, request, *args, **kwargs):
+        whole_cakes = MenuItem.objects.filter(category__name__contains="Whole Cakes")
+        dessert_platters = MenuItem.objects.filter(category__name__contains="Dessert Platters")
+        cake_slices = MenuItem.objects.filter(category__name__contains="Cake Slices")
+
+        context = {
+            'WholeCakes': whole_cakes,
+            'DessertPlatters': dessert_platters,
+            'CakeSlices': cake_slices,
+        }
+        return render(request, 'customer/menu_guest.html', context)
+
+
 class Order(View):
     def get(self, request, *args, **kwargs):
         whole_cakes = MenuItem.objects.filter(category__name__contains="Whole Cakes")
