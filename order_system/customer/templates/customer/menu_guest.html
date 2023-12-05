@@ -36,9 +36,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li><a href="{% url 'home' %}"><div class="icon home-icon">Home</div></a></li>
                         <li><a href="{% url 'order' %}"><div class="icon items-icon">Items</div></a></li>
-                        <li><a href="{% url 'customer-dashboard' %}"><div class="icon contact-icon">Dashboard</div></a></li>
-
+                        <li><a href="{% url 'contact' %}"><div class="icon contact-icon"> Contact   Us</div></a></li>
+                        <li><a href="{% url 'about' %}"><div class="icon contact-icon"> About</div></a></li>
                     </ul>
                 </div>
             </div>
@@ -59,9 +60,6 @@
                 {% for cake in WholeCakes %}
                     <div class="product-card">
                         <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <div class="form-group form-check">
-                            <input type="checkbox" name="items[]" class="form-check-input" value="{{ cake.pk }}">
-                        </div>
                         <p class="product-title">{{ cake.name }}</p>
                         <p class="product-details">{{ cake.description }}</p>
                         <p class="product-price">{{ cake.price }}</p>
@@ -73,9 +71,6 @@
                 {% for cake in DessertPlatters %}
                     <div class="product-card">
                         <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <div class="form-group form-check">
-                            <input type="checkbox" name="items[]" class="form-check-input" value="{{ cake.pk }}">
-                        </div>
                         <p class="product-title">{{ cake.name }}</p>
                         <p class="product-details">{{ cake.description }}</p>
                         <p class="product-price">{{ cake.price }}</p>
@@ -87,77 +82,15 @@
                 {% for cake in CakeSlices %}
                     <div class="product-card">
                         <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <div class="form-group form-check">
-                            <input type="checkbox" name="items[]" class="form-check-input" value="{{ cake.pk }}">
-                        </div>
                         <p class="product-title">{{ cake.name }}</p>
                         <p class="product-details">{{ cake.description }}</p>
                         <p class="product-price">{{ cake.price }}</p>
                     </div>
                 {% endfor %}
             </div>
-            <div class="container mt-5">
-
-
-        <!-- Customer Details Form -->
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-
-                <!-- Customer Name -->
-                <div class="mb-3">
-                    <label for="customer_name" class="form-label">Customer Name:</label>
-                    <input type="text" required class="form-control" id="customer_name" name="customer_name">
-                </div>
-
-                <!-- Contact Number -->
-                <div class="mb-3">
-                    <label for="contact_number" class="form-label">Contact Number:</label>
-                    <input type="tel" required class="form-control" id="contact_number" placeholder="0712345678" name="contact_number" >
-                </div>
-
-                <div class = "mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input required class="form-control" type="text" id = "email" placeholder="example@company.com" name="email"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g., example@company.com)" />
-                </div>
-
-                <!-- Delivery Address -->
-                <div class="mb-3">
-                    <label for="delivery_address" class="form-label">Delivery Address:</label>
-                    <textarea required class="form-control" id="delivery_address" name="delivery_address" rows="3"></textarea>
-                </div>
-
-                <!-- Delivery Date and Time -->
-                <div class="mb-3">
-                    <label for="delivery_date" class="form-label">Delivery Date:</label>
-                    <input type="date" required class="form-control" id="delivery_date" name="delivery_date" >
-                </div>
-                <div class="mb-3">
-                    <label for="delivery_time" class="form-label">Delivery Time:</label>
-                    <input type="time" required class="form-control" id="delivery_time" name="delivery_time" >
-                </div>
-
-                <!-- Special Notes -->
-                <div class="mb-3">
-                    <label for="special_notes" class="form-label">Special Notes:</label>
-                    <textarea class="form-control" id="special_notes" name="special_notes" rows="3"></textarea>
-                </div>
-
-                <!-- Payment Option -->
-                <div class="mb-3">
-                    <label for="payment_option" class="form-label">Payment Option:</label>
-                    <select class="form-select" id="payment_option" name="payment_option" required>
-                        <option value="cash_on_delivery">Cash on Delivery</option>
-                    </select>
-                </div>
-
-            <button class="btn btn-danger mt-5">Place Order!</button>
-            </div>
-        </div>
-            </div>
         </form>
-    </div>
-
+        </div>
+    
     <br><br>
     <footer class="custom-footer text-center">
         <div class="container">
