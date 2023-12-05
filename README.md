@@ -7,11 +7,11 @@ The main aim of building the web application is to create an online order-taking
 1. Planning the web application functionalities and design.
 2. Creating apps/modules for customer and admin interfaces.
 3. Creating web pages to suit the needs of each app.
-4. Connecting the web pages with Django
+4. Making the necessary changes for backend development.
 
 
-To log in as an admin user, you can use the following credentials.
+To log in as an admin user, the following credentials can be used in the management login available in the footer of the website.
 * Username: manager
 * Email: manager@sponge.lk
 * Password: 12345
-  
+
