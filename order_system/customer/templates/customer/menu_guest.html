@@ -50,47 +50,59 @@
                 </a>
         </div>
     </header>
+<div class="page-name">
+    <h1 class="highlighted-header">Menu</h1>
 
-    <div class="page-name">
-        <h1 class="highlighted-header">Menu</h1>
+    <form method="POST">
+        {% csrf_token %}
 
-        <form method="POST">
-            {% csrf_token %}
-            <div class="pt-5">
-                {% for cake in WholeCakes %}
-                    <div class="product-card">
-                        <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <p class="product-title">{{ cake.name }}</p>
-                        <p class="product-details">{{ cake.description }}</p>
-                        <p class="product-price">{{ cake.price }}</p>
-                    </div>
-                {% endfor %}
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Whole Cakes</h2>
+                <div class="product-cards">
+                    {% for cake in WholeCakes %}
+                        <div class="product-card">
+                            <img class="product-image" src="{{ cake.image.url }}" alt="{{ cake.name }}">
+                            <p class="product-title">{{ cake.name }}</p>
+                            <p class="product-details">{{ cake.description }}</p>
+                            <p class="product-price">{{ cake.price }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="pt-5">
-                {% for cake in DessertPlatters %}
-                    <div class="product-card">
-                        <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <p class="product-title">{{ cake.name }}</p>
-                        <p class="product-details">{{ cake.description }}</p>
-                        <p class="product-price">{{ cake.price }}</p>
-                    </div>
-                {% endfor %}
+            <div class="col-md-4">
+                <h2>Dessert Platters</h2>
+                <div class="product-cards">
+                    {% for cake in DessertPlatters %}
+                        <div class="product-card">
+                            <img class="product-image" src="{{ cake.image.url }}" alt="{{ cake.name }}">
+                            <p class="product-title">{{ cake.name }}</p>
+                            <p class="product-details">{{ cake.description }}</p>
+                            <p class="product-price">{{ cake.price }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="pt-5">
-                {% for cake in CakeSlices %}
-                    <div class="product-card">
-                        <img class="product-image" src="{{ cake.image.url }}" alt="Choco Fudge Cake">
-                        <p class="product-title">{{ cake.name }}</p>
-                        <p class="product-details">{{ cake.description }}</p>
-                        <p class="product-price">{{ cake.price }}</p>
-                    </div>
-                {% endfor %}
+            <div class="col-md-4">
+                <h2>Cake Slices</h2>
+                <div class="product-cards">
+                    {% for cake in CakeSlices %}
+                        <div class="product-card">
+                            <img class="product-image" src="{{ cake.image.url }}" alt="{{ cake.name }}">
+                            <p class="product-title">{{ cake.name }}</p>
+                            <p class="product-details">{{ cake.description }}</p>
+                            <p class="product-price">{{ cake.price }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </form>
         </div>
-    
+    </form>
+</div>
+
+
     <br><br>
     <footer class="custom-footer text-center">
         <div class="container">
