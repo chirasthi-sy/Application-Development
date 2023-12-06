@@ -101,7 +101,7 @@ class Order(View):
             f"We appreciate your business!")
 
         # This will display an email in the console
-        send_mail('Thank You For Your Order!', body, "info@sponge.lk", [email], fail_silently=False)
+        send_mail('Thank You For Your Order!', body, "sponge.lk@oulook.com", [email], fail_silently=False)
 
         context = {
             'items': order_items['items'],

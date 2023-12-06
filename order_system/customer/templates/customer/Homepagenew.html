@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponge.lk - one-stop shop for all your sweet cravings!</title>
+    <link rel="stylesheet" href="{% static 'main_style.css'%}">
+    <link rel="stylesheet" href="{% static 'Product-container_styles.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .content {
+            margin-top: 120px; /* Adjust this value to make space for the fixed header */
+        }
+
+        .notice-container {
+            width: 36.1cm;
+            height: 12.5cm;
+            position: relative;
+            text-align: center;
+            animation: changeBackground 10s infinite;
+            box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75); /* Add shadow */
+        }
+
+        @keyframes changeBackground {
+            0% {
+                background-image: url('https://media.gettyimages.com/id/529391959/photo/birthday-cake-with-candles-and-sparklers.jpg?s=612x612&w=0&k=20&c=05LCEmNCcu85cggPMGm7ffdLmJzpK9aGWT3X7bJKj_w=');
+            }
+            33% {
+                background-image: url('https://media.gettyimages.com/id/1480118232/photo/high-angle-christmas-feast-with-delicious-food-high-quality-and-resolution-beautiful-photo.jpg?s=612x612&w=0&k=20&c=t0xX-1BVztraheqWZQgKmvXLgxQ2gtAqDbFFMni5sBw=');
+            }
+            66% {
+                background-image: url('https://media.gettyimages.com/id/157678379/photo/chocolate-pralines-in-a-swiss-confiserie.jpg?s=612x612&w=0&k=20&c=YQqY2fMm6KfYuHi90bKPhzApU4GM0UlWjr15XtHjeZk=');
+            }
+            100% {
+                background-image: url('https://media.gettyimages.com/id/529391959/photo/birthday-cake-with-candles-and-sparklers.jpg?s=612x612&w=0&k=20&c=05LCEmNCcu85cggPMGm7ffdLmJzpK9aGWT3X7bJKj_w=');
+            }
+        }
+
+        .message-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+        }
+
+        .message {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.sponge.lk/Images/SpongeLogo.png" alt="Sponge Logo" width="150px" height="100px">
+        <h1></h1>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li><a href="{% url 'home' %}"><div class="icon home-icon">Home</div></a></li>
+                        <li><a href="{% url 'order' %}"><div class="icon items-icon">Items</div></a></li>
+                        <li><a href="{% url 'dashboard' %}"><div class="icon home-icon">Log In</div></a></li>
+                        <li><a href="{% url 'contact' %}"><div class="icon contact-icon"> Contact   Us</div></a></li>
+                        <li><a href="{% url 'about' %}"><div class="icon contact-icon"> About</div></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="cart-icon">
+
+        </div>
+    </header>
+    <div class="content">
+        <div class="notice-container">
+            <div class="message-box">
+                <p class="message">Purchase one large platter and receive a complimentary Vanilla Ribbon Cake.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messageBox = document.querySelector(".message-box");
+        const messages = [
+            "Purchase one large platter and receive a complimentary Vanilla Ribbon Cake.",
+            "Enjoy a 10% discount on pre-orders for special occasions.",
+            "With Christmas just around the corner, keep an eye on us for a delightful selection of the finest Christmas cakes in town!",
+        ];
+
+        let currentMessageIndex = 0;
+
+        function updateMessageBox() {
+            messageBox.innerHTML = `<p class="message">${messages[currentMessageIndex]}</p>`;
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        }
+
+        updateMessageBox();
+        setInterval(updateMessageBox, 5000); // Display each message for 5 seconds
+    </script>
+
+       <div class="best_sellers-container">
+        <h2 class="highlighted-header">Best Sellers</h2><div class="product-container">
+    <!-- Product 1 -->
+    <div class="product-card">
+        <img class="product-image" src="https://tse4.mm.bing.net/th?id=OIP.9Ag61N3IY_KJAsLokqvJjQHaHa&pid=Api&P=0&h=220" alt="Brown Eyes Cake">
+        <p class="product-title">Brown Eyes Cake</p>
+        <p class="product-details">More details</p>
+        <p class="product-price">Rs. 2090</p>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+        <img class="product-image" src="https://tse1.mm.bing.net/th?id=OIP.AdXNnvFw99JHL1XgyNzzwAHaF0&pid=Api&P=0&h=220" alt="Choco Fudge Cake">
+        <p class="product-title">Choco Fudge Cake</p>
+        <p class="product-details">More details</p>
+        <p class="product-price">Rs. 2390</p>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+        <img class="product-image" src="https://tse3.mm.bing.net/th?id=OIP.UOwUKX91ksZay6RCh_QzWgHaHa&pid=Api&P=0&h=220" alt="Rainbow Cake">
+        <p class="product-title">Rainbow Cake</p>
+        <p class="product-details">More details</p>
+        <p class="product-price">Rs. 4890</p>
+    </div>
+
+
+
+</div>
+
+<br><br>
+<footer class="custom-footer text-center">
+        <div class="container">
+            <p>&copy; 2023 Sponge.lk. All Rights Reserved.</p>
+            <p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'contact' %}">Contact Us</a></p>
+        </div>
+    </footer>
+</body>
+</html>
