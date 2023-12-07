@@ -4,8 +4,9 @@ from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
 from django.contrib.auth.models import Group, User
 
+
 # Create your models here.
-#This model shows our menu database
+# This model shows our menu database
 class MenuItem(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -16,7 +17,8 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.name
 
-#This model shows the available bakery categories in our menu
+
+# This model shows the available bakery categories in our menu
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -26,7 +28,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-#This model creates the order details
+
+# This model creates the order details
 class OrderModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -48,7 +51,8 @@ class OrderModel(models.Model):
     def __str__(self):
         return f'Order:{self.created_on.strftime("%b %d %I:%M %p")}'
 
-#This function assigns all users who have signed up as a customer
+
+# This function assigns all users who have signed up as a customer
 @receiver(user_signed_up)
 def assign_to_customer_group(sender, request, user, **kwargs):
     # Get or create the 'customer' group
@@ -56,6 +60,7 @@ def assign_to_customer_group(sender, request, user, **kwargs):
 
     # Add the user to the 'customer' group
     user.groups.add(customer_group)
+
 
 @receiver(post_save, sender=User)
 def add_to_customer_group(sender, instance, created, **kwargs):
