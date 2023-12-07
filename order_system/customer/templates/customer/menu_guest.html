@@ -22,6 +22,10 @@
         .form-check-input:checked::before {
             color: white;
         }
+
+        p.tex{
+        text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -52,7 +56,9 @@
     </header>
 <div class="page-name">
     <h1 class="highlighted-header">Menu</h1>
-
+    <br><br>
+    <div><p class="tex"> Please sign up / login to place order! </p></div>
+<br><br>
     <form method="POST">
         {% csrf_token %}
 
