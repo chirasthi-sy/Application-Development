@@ -143,7 +143,7 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp-mail.outlook.com'
-EMAIL_HOST_USER = 'sponge.lk@oulook.com'
+EMAIL_HOST_USER = 'sponge.lk@outlook.com'
 EMAIL_HOST_PASSWORD = '(V/t,Qtte^T4D4H'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
