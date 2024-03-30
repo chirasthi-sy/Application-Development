@@ -1,6 +1,5 @@
 # Application-Development
-This repository contains all files and documents related to the web application built for Sponge Ltd, a popular pastry shop in Sri Lanka. 
-With a dedicated and friendly staff of over 80 men and women, the company strives to provide the best quality food and service.
+This repository contains all files and documents related to the web application built for a popular pastry shop in Sri Lanka. 
 
 The repository structure is as follows.
 * Planning documentation - contains all files created during web application planning
